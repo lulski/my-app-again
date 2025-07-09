@@ -4,6 +4,7 @@ import type { SubmitHandler } from "react-hook-form";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import type { FormData } from "./types/types";
+import UseEffectDemo from "./UseEffectDemo.tsx";
 
 function App() {
   const methods = useForm<FormData>();
@@ -18,10 +19,11 @@ function App() {
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         {step === 1 && <Step1 />}
         {step === 2 && <Step2 />}
+        {step === 3 && <UseEffectDemo />}
 
         <div style={{ marginTop: 20 }}>
           {step > 1 && <button onClick={() => setStep(step - 1)}>Back</button>}
-          {step < 2 && (
+          {step < 3 && (
             <button type="button" onClick={() => setStep(step + 1)}>
               Next
             </button>

@@ -1,8 +1,16 @@
-import { useFormContext } from "react-hook-form";
+import {useFormContext, useWatch} from "react-hook-form";
 import type { FormData } from "./types/types";
+import {useEffect} from "react";
 
 function Step2() {
-  const { register } = useFormContext<FormData>();
+  const { register, control, setValue } = useFormContext<FormData>();
+  const firstName = useWatch({control, name: "firstName"});
+
+  useEffect(()=>{
+      if (firstName === "admin") {
+          setValue("email", "admin@test.com")
+      }
+  },[firstName,setValue])
 
   return (
     <div>
